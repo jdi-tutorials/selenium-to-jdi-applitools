@@ -5,12 +5,14 @@ package jdisite.pages;
  * Email: roman.iovlev.jdi@gmail.com; Skype: roman.iovlev
  */
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import com.epam.jdi.light.elements.composite.WebPage;
+import com.epam.jdi.light.elements.pageobjects.annotations.*;
+import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
+import com.epam.jdi.light.ui.html.elements.common.*;
 
-public class HomePage {
-    public static final String URL = "https://jdi-testing.github.io/jdi-light/";
-    @FindBy(id ="user-icon") public WebElement userIcon;
-    @FindBy(id ="user-name") public WebElement userName;
-    @FindBy(css = ".fa-sign-out") public WebElement logout;
+@Url("/index.html") @Title("Home Page")
+public class HomePage extends WebPage {
+    public static Icon userIcon;
+    public static Text userName;
+    @UI(".fa-sign-out") public static Button logout;
 }

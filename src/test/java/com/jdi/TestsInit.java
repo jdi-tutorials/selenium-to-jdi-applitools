@@ -5,24 +5,20 @@ package com.jdi;
  * Email: roman.iovlev.jdi@gmail.com; Skype: roman.iovlev
  */
 
-import com.epam.jdi.light.driver.WebDriverUtils;
-import jdisite.pages.HomePage;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import jdisite.pages.JDISite;
+import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
 
 import static com.epam.jdi.eyes.JDIEyes.*;
-import static jdisite.utils.DriverUtils.DRIVER;
-import static jdisite.utils.DriverUtils.runChromeDriver;
+import static com.epam.jdi.light.driver.WebDriverUtils.killAllSeleniumDrivers;
+import static com.epam.jdi.light.elements.composite.WebPage.openSite;
 
 public class TestsInit {
     @BeforeSuite(alwaysRun = true)
     public static void setUp() {
-        runChromeDriver();
-        DRIVER.navigate().to(HomePage.URL);
-        visualTestInitSelenium();
+        openSite(JDISite.class);
+        visualTestInitJdi();
     }
 
     @BeforeMethod
@@ -33,6 +29,6 @@ public class TestsInit {
     @AfterSuite(alwaysRun = true)
     public static void teardown() {
         closeAllEyes();
-        WebDriverUtils.killAllSeleniumDrivers();
+        killAllSeleniumDrivers();
     }
 }

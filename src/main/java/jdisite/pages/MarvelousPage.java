@@ -5,15 +5,11 @@ package jdisite.pages;
  * Email: roman.iovlev.jdi@gmail.com; Skype: roman.iovlev
  */
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import com.epam.jdi.light.elements.complex.table.DataTable;
+import com.epam.jdi.light.elements.composite.WebPage;
+import jdisite.custom.MarvelUser;
+import jdisite.entities.MarvelUserInfo;
 
-public class MarvelousPage {
-    @FindBy(id = "user-table") public WebElement userTable;
-    @FindBy(xpath = "//*[@id='user-table']//tr[2]")
-    public WebElement userRow2;
-    @FindBy(xpath = "//*[@id='user-table']//tr[2]/td[4]")
-    public WebElement descriptionOfUser2;
-    @FindBy(xpath = "//*[@id='user-table']//tr[2]/td[4]//img")
-    public WebElement imageOfUser2;
+public class MarvelousPage extends WebPage {
+    public static DataTable<MarvelUser, MarvelUserInfo> userTable;
 }

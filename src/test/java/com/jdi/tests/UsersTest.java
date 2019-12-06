@@ -6,28 +6,28 @@ package com.jdi.tests;
  */
 
 import com.jdi.TestsInit;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
+import static com.epam.jdi.light.elements.complex.table.Row.inRow;
 import static com.jdi.states.State.loggedIn;
-import static jdisite.enums.MenuOptions.Service;
-import static jdisite.enums.MenuOptions.UserTable;
-import static jdisite.pages.JDISite.marvelousPage;
-import static jdisite.pages.JDISite.selectInMenu;
-import static org.testng.Assert.assertTrue;
+import static jdisite.entities.DefaultData.SPIDER_MAN;
+import static jdisite.enums.MenuOptions.*;
+import static jdisite.pages.JDISite.leftMenu;
+import static jdisite.pages.MarvelousPage.userTable;
+import static org.hamcrest.Matchers.containsString;
 
 public class UsersTest extends TestsInit {
     @BeforeMethod
     public void before() {
         loggedIn();
-        selectInMenu(Service);
-        selectInMenu(UserTable);
+        leftMenu.select(Service, UserTable);
     }
     @Test
     public void verifyUsersTest() {
-        assertTrue(marvelousPage.userTable.isDisplayed());
-        assertTrue(marvelousPage.userRow2.isDisplayed());
-        assertTrue(marvelousPage.descriptionOfUser2.isDisplayed());
-        assertTrue(marvelousPage.imageOfUser2.isDisplayed());
+        userTable.is().displayed();
+        userTable.has().value(SPIDER_MAN, inRow(2));
+        userTable.line(2).description.is().displayed();
+        userTable.line(2).description.image
+            .has().src(containsString("spider-man"));
     }
 }
