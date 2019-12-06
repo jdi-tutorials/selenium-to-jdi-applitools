@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30" status="debug">
+
+  <Appenders>
+    <Console name="SOUT" target="SYSTEM_OUT" follow="true">
+      <PatternLayout pattern="[%-5level %d{mm:ss.SSS}]: %m%n"/>
+    </Console>
+  </Appenders>
+
+  <Loggers>
+    <Root level="DEBUG">
+      <AppenderRef ref="SOUT"/>
+    </Root>
+
+  </Loggers>
+</Configuration>

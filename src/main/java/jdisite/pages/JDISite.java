@@ -10,7 +10,7 @@ import jdisite.sections.LoginForm;
 import org.openqa.selenium.By;
 
 import static jdisite.utils.DriverUtils.DRIVER;
-import static org.openqa.selenium.support.PageFactory.initElements;
+import static com.epam.jdi.light.elements.init.PageFactory.initElements;
 
 public class JDISite {
     public static HomePage homePage = initElements(DRIVER, HomePage.class);
